@@ -168,9 +168,13 @@ def gerar_pdf_bytes(nome_comprador, cpf_comprador, email_comprador):
 def gerar_pdf():
     dados = request.get_json()
 
-    nome  = dados.get("nome", "Comprador")
-    cpf   = dados.get("cpf", "Não informado")
-    email = dados.get("email", "")
+    # Aceita qualquer formato da Kirvano
+nome  = (dados.get("nome") or dados.get("customer_name") or 
+         dados.get("name") or dados.get("customer", {}).get("name", "Comprador"))
+cpf   = (dados.get("cpf") or dados.get("customer_document") or 
+         dados.get("document") or dados.get("customer", {}).get("document", "Não informado"))
+email = (dados.get("email") or dados.get("customer_email") or 
+         dados.get("customer", {}).get("email", "comprador@teste.com"))
 
     if not email:
         email = "comprador@teste.com"
