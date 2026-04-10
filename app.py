@@ -156,7 +156,6 @@ def gerar_pdf_bytes(nome_comprador, cpf_comprador, email_comprador):
     story.append(Paragraph("Como usar esta lista:", es["dica_title"]))
     story.append(Paragraph("1. Entre em contato via WhatsApp apresentando-se como lojista ou revendedor.", es["dica"]))
     story.append(Paragraph("2. Pergunte sobre catálogo, pedido mínimo e condições de pagamento.", es["dica"]))
-    story.append(Paragraph("3. Solicite amostras antes de fazer o primeiro pedido maior.", es["dica"]))
     story.append(Paragraph("4. Guarde este PDF com segurança — contém seus dados de licença.", es["dica"]))
 
     doc.build(story, onFirstPage=rodape, onLaterPages=rodape)
